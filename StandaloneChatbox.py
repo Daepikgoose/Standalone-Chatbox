@@ -140,7 +140,7 @@ headsetip = f"{configfolder}/ip"
 messagefile = f"{configfolder}/message"
 updaterate = f"{configfolder}/updaterate"
 animatedtextfile = f"{configfolder}/animatedtext"
-version_url = "https://pastebin.com/raw/sjqiyq82"
+version_url = "https://raw.githubusercontent.com/Daepikgoose/Standalone-Chatbox/refs/heads/main/version"
 version = 1
 latestversion = re.get(version_url).text
 # setting up starter variables
