@@ -140,10 +140,12 @@ headsetip = f"{configfolder}/ip"
 messagefile = f"{configfolder}/message"
 updaterate = f"{configfolder}/updaterate"
 animatedtextfile = f"{configfolder}/animatedtext"
+tinychat = f"{configfolder}/tinychat"
+thinchatunicodes = "\u0003\u001f"
 version_url = "https://raw.githubusercontent.com/Daepikgoose/Standalone-Chatbox/refs/heads/main/version"
-version = 1
+version = 1.1
 latestversion = re.get(version_url).text
-# setting up starter variables
+# setting up variables
 
 
 if not os.path.exists(configfolder):
@@ -155,7 +157,7 @@ if not os.path.isfile(headsetip):
 
 if not os.path.isfile(updaterate):
     with open(updaterate, 'w') as file:
-        file.write('3')
+        file.write('1.5')
 
 if not os.path.isfile(messagefile):
     with open(messagefile, 'w') as file:
@@ -164,6 +166,10 @@ if not os.path.isfile(messagefile):
 if not os.path.isfile(animatedtextfile):
     with open(animatedtextfile, 'w') as file:
         file.write('text1\ntext2\ntext3')
+
+if not os.path.isfile(tinychat):
+    with open(tinychat, 'w') as file:
+        file.write('0')
 # setting up the config folder and files if they dont exist
 
 
@@ -176,16 +182,18 @@ with open(headsetip, 'r') as file:
 with open(updaterate, 'r') as file:
 	updatedelay = file.read()
 
+with open(tinychat, 'r') as file:
+	if file.read() == "0":
+		thinchat = False
+	else:
+		thinchat = True
+
 with open(animatedtextfile, 'r') as file:
     for line in file:
         line = line.strip()
         if not line:
             continue
         animatedmessage.append(line)
-
-
-# the useful variables
-
 
 def switchmenu(n):
 	if n == "0":
@@ -204,7 +212,7 @@ def switchmenu(n):
 
 
 def editconfig(w, v):
-	global ip, message, updatedelay
+	global ip, message, updatedelay, thinchat
 	if w == "1":
 		with open(headsetip, 'w') as file:
 			file.write(v)
@@ -223,6 +231,16 @@ def editconfig(w, v):
 		updatedelay = v
 		input("Value edited, press any key to go back")
 		switchmenu(1)
+	elif w == "4":
+		if thinchat == False:
+			thinchat = True
+			with open(tinychat, 'w') as file:
+				file.write("1")
+		else:
+			thinchat = False
+			with open(tinychat, 'w') as file:
+				file.write("0")
+			
 
 
 def mainmenu():
@@ -245,12 +263,16 @@ def configmenu():
 	print("1. Edit headset ip".center(shutil.get_terminal_size().columns))
 	print("2. Edit message".center(shutil.get_terminal_size().columns))
 	print("3. Edit update rate".center(shutil.get_terminal_size().columns))
-	print("4. Back to main menu".center(shutil.get_terminal_size().columns))
+	print("4. Toggle thin chat".center(shutil.get_terminal_size().columns))
+	print("5. Back to main menu".center(shutil.get_terminal_size().columns))
 	choice = input("Choice: ")
-	if choice == "1" or "2" or "3":
+	if choice in ("1", "2", "3"):
 		value = input("New value: ")
 		editconfig(choice, value)
 	elif choice == "4":
+		editconfig("4", "Useless text")
+		switchmenu(1)
+	elif choice == "5":
 		switchmenu(0)
 	else:
 		switchmenu(1)
@@ -265,6 +287,7 @@ def infomenu():
 	print(f"Device ip: {ip}".center(shutil.get_terminal_size().columns))
 	print(f"Message: {message}".center(shutil.get_terminal_size().columns))
 	print(f"Update rate: {updatedelay}".center(shutil.get_terminal_size().columns))
+	print(f"Thin chat: {thinchat}".center(shutil.get_terminal_size().columns))
 	input("Press any key to go back")
 	switchmenu(0)
 
@@ -282,7 +305,10 @@ def startscript(i, m):
     .replace("{animatedmessage}", animatedmessage[index])
     .replace("\\n", "\n")
 )
-		client.send_message("/chatbox/input", [infoformat, True, False])
+		if thinchat == True:
+			client.send_message("/chatbox/input", [infoformat+thinchatunicodes, True, False])
+		else:
+			client.send_message("/chatbox/input", [infoformat, True, False])
 		time.sleep(float(updatedelay))
 		index = (index + 1) % len(animatedmessage)
 
