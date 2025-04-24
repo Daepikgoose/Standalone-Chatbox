@@ -1,14 +1,14 @@
 ## Features
-custom update rate
-animated messages
-saving your changes
+- custom update rate
+- animated messages
+- saving your changes
 
 ## Tags
-{hour} the current hour
-{minute} the current minute
-{updaterate} delay between updates
-{randomfact} random fact from a list, added this for fun
-{animatedmessage} the animated message
+- {hour} the current hour
+- {minute} the current minute
+- {updaterate} delay between updates
+- {randomfact} random fact from a list, added this for fun
+- {animatedmessage} the animated message
 
 
 ## What is Standalone Chatbox?
