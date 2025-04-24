@@ -1,7 +1,7 @@
 ## Features
-custom update rate
-animated message
-saving your changes
+> custom update rate
+> animated message
+> saving your changes
 
 ## Tags
 {hour} the current hour
