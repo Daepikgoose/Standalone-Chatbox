@@ -2,8 +2,7 @@ Standalone Chatbox is a python script made to create custom chatboxes similar to
 It's recommended to run Standalone Chatbox on a device other than the one running vrchat so that your system doesn't kill the process
 
 ## Changelog
-- Small bug fix
-- Added thin chatbox
+- Made it work on Windows (untested)
 
 ## Features
 - custom update rate
