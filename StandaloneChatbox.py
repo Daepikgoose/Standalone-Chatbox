@@ -147,7 +147,7 @@ animatedtextfile = f"{configfolder}/animatedtext"
 tinychat = f"{configfolder}/tinychat"
 thinchatunicodes = "\u0003\u001f"
 version_url = "https://raw.githubusercontent.com/Daepikgoose/Standalone-Chatbox/refs/heads/main/version"
-version = 1.1
+version = 1.2
 latestversion = re.get(version_url).text
 # setting up variables
 
