@@ -1,6 +1,7 @@
 import os
 import time
 import shutil
+import sys
 import json
 import random
 import requests as re
@@ -132,7 +133,10 @@ except:
 # attempts to import pythonosc, if it fails it asks the user if it wants to install
 
 def clear():
-	os.system("clear")
+	if sys.platform.lower() == "linux":
+		os.system("clear")
+	else:
+		os.system("cls")
 # making a clear function to clear the terminal
 
 configfolder = "scbconfig"
