@@ -2,7 +2,9 @@ Standalone Chatbox is a python script made to create custom chatboxes similar to
 It's recommended to run Standalone Chatbox on a device other than the one running vrchat so that your system doesn't kill the process
 
 ## Changelog
-- Made it work on Windows (untested)
++ added tag currentos (displays the operating system the script is ran on)
+~ Renamed tag randomfact to randommessage
+- made it so adding "--quick-start" after running the script (so "python StandaloneChatbox.py --quick-start") automaticly starts the script and skips the menu
 
 ## Features
 - custom update rate
@@ -13,8 +15,9 @@ It's recommended to run Standalone Chatbox on a device other than the one runnin
 - {hour} the current hour
 - {minute} the current minute
 - {updaterate} delay between updates
-- {randomfact} random fact from a list, added this for fun
+- {randommessage} random message from a list, must be edited via the script
 - {animatedmessage} the animated message
+- {currentos} the os the script is ran on
 
 ## FAQ
 **What is Standalone Chatbox?**
