@@ -19,6 +19,10 @@ It's recommended to run Standalone Chatbox on a device other than the one runnin
 - {animatedmessage} the animated message
 - {currentos} the os the script is ran on
 
+## What's planned?
+Stuff like an actual apk instead of a python script is planned, however will most likely not come due to lazyness and other stuff.
+Having an apk version would also let you display your notifications, which would also mean songs!
+
 ## FAQ
 **What is Standalone Chatbox?**
 - Standalone Chatbox is a python script inspired by MagicChatbox (yes I stole the name) but for standalone vr headsets or other devices.
